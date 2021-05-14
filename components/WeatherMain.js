@@ -119,10 +119,10 @@ class WeatherMain extends React.Component {
                   Wind:{windSpeed} mph
                 </Text>{"\n"}
                 <Text style={[styles.smallText, styles.otherStyle]}>
-                  Predictability: {predictAbility}
+                  Predictability: {predictAbility} %
                 </Text>{"\n"}
                 <Text style={[styles.smallText, styles.otherStyle]}>
-                  Min:{minTemp}° | Max:{maxTemp}° 
+                  Min:{minTemp}°C | Max:{maxTemp}°C 
                 </Text>{"\n"}           
                 </Text>
                 </Text>
