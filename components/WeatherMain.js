@@ -106,7 +106,7 @@ class WeatherMain extends React.Component {
 
                 <Text style={[styles.smallText, styles.textStyle, styles.boxStyle]}>
                 <Text style={styles.contentStyle}>
-                <Text style={[styles.weatherText, styles.textStyle]}>
+                <Text style={styles.weatherText}>
                 Today Weather is {"\n"}"{weather ? weather :''}"
                 </Text>{"\n"}
                 <Text style={[styles.smallText, styles.otherStyle]}>
@@ -158,7 +158,9 @@ const styles = StyleSheet.create({
       fontSize: 50,
     },
     weatherText: {
-      fontSize: 30
+      textAlign: 'center',
+      fontSize: 30,
+      color:'#4682B4'
     },
     upText: {
       fontSize:50,
