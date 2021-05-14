@@ -60,12 +60,12 @@ class WeatherMain extends React.Component {
         location: text,
         weather: `Search Again`,
         temperature: `0`,
-        humidity:'0 wind speed',
+        humidity:'0',
         imageBackground: getImageBackground('c'),
         minTemp: 'N/A',
         maxTemp: 'N/A',
         timeZone:'N/A',
-        wind:"N/A",
+        windSpeed:"N/A",
         predictAbility:"N/A",
         airPressure:"N/A"
         
