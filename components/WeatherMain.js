@@ -1,12 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import {
-  StyleSheet, Text, View, Platform, TextInput, KeyboardAvoidingView,
+  StyleSheet, Text, View, KeyboardAvoidingView,
   ImageBackground, ActivityIndicator, Image
 } from 'react-native';
 import { getWeather, getImageBackground } from './WeatherApi';
 import Search from './Search';
-import DateTimePicker from '@react-native-community/datetimepicker';
+
 
 
 
@@ -71,6 +70,10 @@ class WeatherMain extends React.Component {
     }
   }
 
+  static navigationOptions = {
+    title: 'Search Weather'
+}
+
   render() {
     let { predictAbility, timeZone, windSpeed, minTemp, maxTemp, location, weather, temperature, humidity, imageBackground, loading, error } = this.state;
     if (!imageBackground) {
@@ -104,7 +107,7 @@ class WeatherMain extends React.Component {
                 <Text style={[styles.smallText, styles.textStyle, styles.boxStyle]}>
                 <Text style={styles.contentStyle}>
                 <Text style={[styles.weatherText, styles.textStyle]}>
-                Today Weather is {"\n"} {weather ? weather : ''}
+                Today Weather is {"\n"}"{weather ? weather :''}"
                 </Text>{"\n"}
                 <Text style={[styles.smallText, styles.otherStyle]}>
                   Humidity:{humidity}% 
