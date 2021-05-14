@@ -5279,6 +5279,11 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
+react-native-date-format@^1.1.30:
+  version "1.1.30"
+  resolved "https://registry.yarnpkg.com/react-native-date-format/-/react-native-date-format-1.1.30.tgz#3d6b99b584120593d0b434db639ffe28ac37870c"
+  integrity sha512-IzP4xTBYQQZBPFVUXQhhhu1FmdeDdDHT3eMMD9Na+sRfbB5RNKuXg+oAH6nk0LFQYWyq0KG7pd7IZmPEqeMpUA==
+
 react-native-iphone-x-helper@^1.3.0:
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/react-native-iphone-x-helper/-/react-native-iphone-x-helper-1.3.1.tgz#20c603e9a0e765fd6f97396638bdeb0e5a60b010"

@@ -39,7 +39,7 @@ class Search extends React.Component {
                     placeholderTextColor="#696969"
                     underlineColorAndroid="transparent"
                     style={styles.textInput}
-                    clearButtonMode="always" // only available on IOS
+                    clearButtonMode="always"
                     onChangeText={this.onChangeText}
                     onSubmitEditing={this.onSubmitEditing}
                 />

@@ -8,6 +8,7 @@ import { getWeather, getImageBackground } from './WeatherApi';
 import Search from './Search';
 
 
+
 class WeatherMain extends React.Component {
 
   constructor(props) {
@@ -21,7 +22,8 @@ class WeatherMain extends React.Component {
       error: false,
       humidity:'',
       minTemp:'',
-      highTemp:''
+      highTemp:'',
+      timeZone:''
 
     }
   }
@@ -54,14 +56,15 @@ class WeatherMain extends React.Component {
         humidity:'0 wind speed',
         imageBackground: getImageBackground('c'),
         minTemp: 'N/A',
-        maxTemp: 'N/A'
+        maxTemp: 'N/A',
+        timeZone:'N/A'
         
       })
     }
   }
 
   render() {
-    let { minTemp, maxTemp, location, weather, temperature, humidity, imageBackground, loading, error } = this.state;
+    let { timeZone, minTemp, maxTemp, location, weather, temperature, humidity, imageBackground, loading, error } = this.state;
     if (!imageBackground) {
       imageBackground = getImageBackground('c')
     }
@@ -74,13 +77,13 @@ class WeatherMain extends React.Component {
                 style={styles.imageContainer}
                 imageStyle={styles.image}
             >
-            <View style={styles.detailsContainer}>           
-             
+            <View style={styles.detailsContainer}>  
+
+                <Text style={[styles.largeText, styles.textStyle]}>
+                    {timeZone}
+                </Text>
                 <Text style={[styles.largeText, styles.textStyle]}>
                     {location}
-                </Text>
-                <Text style={[styles.smallText, styles.textStyle]}>
-                    {weather ? weather : ''}
                 </Text>
                 <Text style={[styles.largeText, styles.textStyle]}>
                     {temperature}°
@@ -91,8 +94,9 @@ class WeatherMain extends React.Component {
                 />
    
                 <Text style={[styles.smallText, styles.textStyle, styles.boxStyle]}>
-                <Text style={[styles.largeText, styles.textStyle]}>
-                 Today Weather
+                <Text style={styles.contentStyle}>
+                <Text style={[styles.largeText, styles.textStyle, styles.titleStyle]}>
+                {weather ? weather : ''}
                 </Text>{"\n"}
                 <Text style={[styles.smallText, styles.otherStyle]}>
                   Humidity:{humidity}% 
@@ -108,6 +112,7 @@ class WeatherMain extends React.Component {
                 </Text>
                 <Text style={[styles.smallText, styles.otherStyle]}>
                   Max:{maxTemp}° {"\n"}
+                </Text>
                 </Text>
                 </Text>
                
@@ -170,13 +175,12 @@ const styles = StyleSheet.create({
         borderRadius: 6,
         backgroundColor: '#DCDCDC',
         color: "#20232a",
-        textAlign: "center",
         fontSize: 15,
-        alignItems:"center",
-        justifyContent:"center",
         width: "90%",
-        height: "20%",
-        marginLeft: 20
+        height: "30%",
+        marginLeft: 20,
+        padding:10
+        
       },
       otherStyle:{
         marginTop: 30,
@@ -185,8 +189,9 @@ const styles = StyleSheet.create({
         marginBottom: 20,
         flexDirection:"row",
         fontSize: 15,
+        marginLeft: "5%"
       },
-  
+
     detailsContainer: {
       flex: 1,
       justifyContent: 'center',

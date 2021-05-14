@@ -6,13 +6,11 @@ export const getLocation = async (query) => {
             .then(function (response) {
                 if (response && response.data && response.data.length > 0) {
                     let location = response.data[0];
-                    //woeid: Where On Earth IDentifier
                     resolve(location.woeid);
                 }
                 resolve()
             })
             .catch(function (error) {
-                // handle error
                 reject(error);
             })
     })
@@ -33,25 +31,23 @@ export const getWeather = async (query) => {
                         let humidity = predict[0].humidity;
                         let minTemp = predict[0].min_temp;
                         let maxTemp = predict[0].max_temp;
+                        let timeZone = predict[0].applicable_date;
                       
                         resolve({
-                            weatherStateName, weatherStateAbbr, temperature, humidity, minTemp, maxTemp
+                            timeZone, weatherStateName, weatherStateAbbr, temperature, humidity, minTemp, maxTemp
                         })
                     } else {
-                        // console.log('without data weather')
                         resolve()
                     }
 
                 })
                 .catch(function (error) {
-                    // handle error
                     console.log(error);
                     reject(error)
                 })
 
         } else {
             resolve()
-            // console.log('without data locationId')
         }
     })
 }
