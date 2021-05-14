@@ -83,14 +83,14 @@ class WeatherMain extends React.Component {
                 imageStyle={styles.image}
             >   
             <View style={styles.detailsContainer}>  
-                <Text style={[styles.smallText, styles.textStyle]}>
+                <Text style={[styles.dateText]}>
                     {timeZone}
                 </Text>     
                 <Text style={[styles.largeText, styles.textStyle]}>
                     {location}
                 </Text>
-                <Text style={[styles.largeText, styles.textStyle]}>
-                    {temperature}°
+                <Text style={[styles.upText, styles.textStyle]}>
+                    {temperature}°C
                 </Text>        
                  
                 <Search style={styles.searchBox}
@@ -100,8 +100,8 @@ class WeatherMain extends React.Component {
 
                 <Text style={[styles.smallText, styles.textStyle, styles.boxStyle]}>
                 <Text style={styles.contentStyle}>
-                <Text style={[styles.largeText, styles.textStyle, styles.titleStyle]}>
-                {weather ? weather : ''}
+                <Text style={[styles.weatherText, styles.textStyle]}>
+                Today Weather is {"\n"} {weather ? weather : ''}
                 </Text>{"\n"}
                 <Text style={[styles.smallText, styles.otherStyle]}>
                   Humidity:{humidity}% 
@@ -113,14 +113,11 @@ class WeatherMain extends React.Component {
                 /> {"\n"}
                 </Text>
                 <Text style={[styles.smallText, styles.otherStyle]}>
-                  Min:{minTemp}° {"\n"}
-                </Text>
-                <Text style={[styles.smallText, styles.otherStyle]}>
-                  Max:{maxTemp}° {"\n"}
-                </Text>
-                <Text style={[styles.smallText, styles.otherStyle]}>
                   Wind:{windSpeed} mph
                 </Text>{"\n"}
+                <Text style={[styles.smallText, styles.otherStyle]}>
+                  Min:{minTemp}° | Max:{maxTemp}° 
+                </Text>          
                 </Text>
                 </Text>
                
@@ -143,11 +140,23 @@ const styles = StyleSheet.create({
       textAlign: 'center',
       color: 'white'
     },
+    dateText:{
+      textAlign: 'center',
+      color: 'white',
+      marginBottom: 80
+    },
     largeText: {
       fontSize: 50,
     },
+    weatherText: {
+      fontSize: 30
+    },
+    upText: {
+      fontSize:50,
+      marginBottom: 30
+    },
     smallText: {
-      fontSize: 20,
+      fontSize: 20
     },
     textInput: {
       backgroundColor: '#666',
@@ -182,11 +191,11 @@ const styles = StyleSheet.create({
         borderRadius: 6,
         backgroundColor: '#DCDCDC',
         color: "#20232a",
-        fontSize: 15,
         width: "90%",
         height: "27%",
         marginLeft: 20,
-        padding:10
+        padding:20,
+        textAlign:'left'
         
       },
       otherStyle:{
@@ -198,7 +207,7 @@ const styles = StyleSheet.create({
         padding: 5,
         marginBottom: 20,
         flexDirection:"row",
-        fontSize: 18,
+        fontSize: 15,
         marginLeft: "5%"
       },
 
