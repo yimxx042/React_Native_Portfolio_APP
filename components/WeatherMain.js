@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import { getWeather, getImageBackground } from './WeatherApi';
 import Search from './Search';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 
 
@@ -23,7 +24,8 @@ class WeatherMain extends React.Component {
       humidity:'',
       minTemp:'',
       highTemp:'',
-      timeZone:''
+      timeZone:'',
+      wind:''
 
     }
   }
@@ -38,9 +40,11 @@ class WeatherMain extends React.Component {
         location: text,
         humidity:data.humidity,
         weather: data.weatherStateName,
+        windSpeed:Number((data.windSpeed).toFixed(1)),
         temperature: Number((data.temperature).toFixed(1)),
         minTemp: Number((data.minTemp).toFixed(1)),
         maxTemp: Number((data.maxTemp).toFixed(1)),
+        timeZone: Date(data.applicable_date) ,
         imageBackground: getImageBackground(data.weatherStateAbbr),
         error: false,
         loading: false
@@ -51,20 +55,21 @@ class WeatherMain extends React.Component {
         error: true,
         loading: false,
         location: text,
-        weather: `Please search another city`,
+        weather: `NA`,
         temperature: `0`,
         humidity:'0 wind speed',
         imageBackground: getImageBackground('c'),
         minTemp: 'N/A',
         maxTemp: 'N/A',
-        timeZone:'N/A'
+        timeZone:'N/A',
+        wind:"N/A"
         
       })
     }
   }
 
   render() {
-    let { timeZone, minTemp, maxTemp, location, weather, temperature, humidity, imageBackground, loading, error } = this.state;
+    let { timeZone, windSpeed, minTemp, maxTemp, location, weather, temperature, humidity, imageBackground, loading, error } = this.state;
     if (!imageBackground) {
       imageBackground = getImageBackground('c')
     }
@@ -76,23 +81,23 @@ class WeatherMain extends React.Component {
                 source={imageBackground}
                 style={styles.imageContainer}
                 imageStyle={styles.image}
-            >
+            >   
             <View style={styles.detailsContainer}>  
-
-                <Text style={[styles.largeText, styles.textStyle]}>
+                <Text style={[styles.smallText, styles.textStyle]}>
                     {timeZone}
-                </Text>
+                </Text>     
                 <Text style={[styles.largeText, styles.textStyle]}>
                     {location}
                 </Text>
                 <Text style={[styles.largeText, styles.textStyle]}>
                     {temperature}°
-                </Text>             
+                </Text>        
+                 
                 <Search style={styles.searchBox}
                     searchPlaceHoder={"Search city"}
                     onSubmit={this.onSubmit}
                 />
-   
+
                 <Text style={[styles.smallText, styles.textStyle, styles.boxStyle]}>
                 <Text style={styles.contentStyle}>
                 <Text style={[styles.largeText, styles.textStyle, styles.titleStyle]}>
@@ -113,6 +118,9 @@ class WeatherMain extends React.Component {
                 <Text style={[styles.smallText, styles.otherStyle]}>
                   Max:{maxTemp}° {"\n"}
                 </Text>
+                <Text style={[styles.smallText, styles.otherStyle]}>
+                  Wind:{windSpeed} mph
+                </Text>{"\n"}
                 </Text>
                 </Text>
                
@@ -144,10 +152,10 @@ const styles = StyleSheet.create({
     textInput: {
       backgroundColor: '#666',
       color: 'black',
-      height: 10,
+      height: 40,
       width: 100,
-      marginTop: 30,
-      marginHorizontal: 10,
+      marginTop: 20,
+      marginHorizontal: 20,
       paddingHorizontal: 10,
       alignSelf: 'center',
     },
@@ -169,7 +177,6 @@ const styles = StyleSheet.create({
     },
       boxStyle: {
         marginTop: 50,
-        paddingVertical:5,
         borderWidth: 2,
         borderColor: "#F8F8FF",
         borderRadius: 6,
@@ -177,18 +184,21 @@ const styles = StyleSheet.create({
         color: "#20232a",
         fontSize: 15,
         width: "90%",
-        height: "30%",
+        height: "27%",
         marginLeft: 20,
         padding:10
         
       },
       otherStyle:{
         marginTop: 30,
+        marginBottom: 10,
+        fontFamily:'Roboto',
+        color: "#696969",
         width:"100%",
-        padding: 40,
+        padding: 5,
         marginBottom: 20,
         flexDirection:"row",
-        fontSize: 15,
+        fontSize: 18,
         marginLeft: "5%"
       },
 

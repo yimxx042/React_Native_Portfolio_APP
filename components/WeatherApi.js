@@ -32,9 +32,10 @@ export const getWeather = async (query) => {
                         let minTemp = predict[0].min_temp;
                         let maxTemp = predict[0].max_temp;
                         let timeZone = predict[0].applicable_date;
+                        let windSpeed = predict[0].wind_speed;
                       
                         resolve({
-                            timeZone, weatherStateName, weatherStateAbbr, temperature, humidity, minTemp, maxTemp
+                            timeZone, windSpeed, weatherStateName, weatherStateAbbr, temperature, humidity, minTemp, maxTemp
                         })
                     } else {
                         resolve()
