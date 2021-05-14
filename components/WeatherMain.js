@@ -58,7 +58,7 @@ class WeatherMain extends React.Component {
         error: true,
         loading: false,
         location: text,
-        weather: `Search Again`,
+        weather: `Invalid Search`,
         temperature: `0`,
         humidity:'0',
         imageBackground: getImageBackground('c'),
