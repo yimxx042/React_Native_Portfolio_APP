@@ -25,7 +25,8 @@ class WeatherMain extends React.Component {
       highTemp:'',
       timeZone:'',
       wind:'',
-      predictAbility:''
+      predictAbility:'',
+      airPressure:''
 
     }
   }
@@ -45,6 +46,7 @@ class WeatherMain extends React.Component {
         minTemp: Number((data.minTemp).toFixed(1)),
         maxTemp: Number((data.maxTemp).toFixed(1)),
         timeZone: Date(data.applicable_date) ,
+        airPressure: Number((data.airPressure).toFixed(1)),
         imageBackground: getImageBackground(data.weatherStateAbbr),
         predictAbility:Number((data.predictAbility).toFixed(1)),
         error: false,
@@ -64,7 +66,8 @@ class WeatherMain extends React.Component {
         maxTemp: 'N/A',
         timeZone:'N/A',
         wind:"N/A",
-        predictAbility:"N/A"
+        predictAbility:"N/A",
+        airPressure:"N/A"
         
       })
     }
@@ -75,7 +78,7 @@ class WeatherMain extends React.Component {
 }
 
   render() {
-    let { predictAbility, timeZone, windSpeed, minTemp, maxTemp, location, weather, temperature, humidity, imageBackground, loading, error } = this.state;
+    let { airPressure, predictAbility, timeZone, windSpeed, minTemp, maxTemp, location, weather, temperature, humidity, imageBackground, loading, error } = this.state;
     if (!imageBackground) {
       imageBackground = getImageBackground('c')
     }
@@ -123,6 +126,9 @@ class WeatherMain extends React.Component {
                 </Text>{"\n"}
                 <Text style={[styles.smallText, styles.otherStyle]}>
                   Predictability: {predictAbility} %
+                </Text>{"\n"}
+                <Text style={[styles.smallText, styles.otherStyle]}>
+                  Air Pressure: {airPressure} 
                 </Text>{"\n"}
                 <Text style={[styles.smallText, styles.otherStyle]}>
                   Min:{minTemp}°C | Max:{maxTemp}°C 
