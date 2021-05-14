@@ -25,7 +25,8 @@ class WeatherMain extends React.Component {
       minTemp:'',
       highTemp:'',
       timeZone:'',
-      wind:''
+      wind:'',
+      predictAbility:''
 
     }
   }
@@ -46,6 +47,7 @@ class WeatherMain extends React.Component {
         maxTemp: Number((data.maxTemp).toFixed(1)),
         timeZone: Date(data.applicable_date) ,
         imageBackground: getImageBackground(data.weatherStateAbbr),
+        predictAbility:Number((data.predictAbility).toFixed(1)),
         error: false,
         loading: false
       })
@@ -55,21 +57,22 @@ class WeatherMain extends React.Component {
         error: true,
         loading: false,
         location: text,
-        weather: `NA`,
+        weather: `Search Again`,
         temperature: `0`,
         humidity:'0 wind speed',
         imageBackground: getImageBackground('c'),
         minTemp: 'N/A',
         maxTemp: 'N/A',
         timeZone:'N/A',
-        wind:"N/A"
+        wind:"N/A",
+        predictAbility:"N/A"
         
       })
     }
   }
 
   render() {
-    let { timeZone, windSpeed, minTemp, maxTemp, location, weather, temperature, humidity, imageBackground, loading, error } = this.state;
+    let { predictAbility, timeZone, windSpeed, minTemp, maxTemp, location, weather, temperature, humidity, imageBackground, loading, error } = this.state;
     if (!imageBackground) {
       imageBackground = getImageBackground('c')
     }
@@ -116,8 +119,11 @@ class WeatherMain extends React.Component {
                   Wind:{windSpeed} mph
                 </Text>{"\n"}
                 <Text style={[styles.smallText, styles.otherStyle]}>
+                  Predictability: {predictAbility}
+                </Text>{"\n"}
+                <Text style={[styles.smallText, styles.otherStyle]}>
                   Min:{minTemp}° | Max:{maxTemp}° 
-                </Text>          
+                </Text>{"\n"}           
                 </Text>
                 </Text>
                
@@ -192,7 +198,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#DCDCDC',
         color: "#20232a",
         width: "90%",
-        height: "27%",
+        height: "30%",
         marginLeft: 20,
         padding:20,
         textAlign:'left'
