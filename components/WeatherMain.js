@@ -61,7 +61,7 @@ class WeatherMain extends React.Component {
         weather: `Invalid Search`,
         temperature: `0`,
         humidity:'0',
-        imageBackground: getImageBackground('c'),
+        imageBackground: getImageBackground('hc'),
         minTemp: 'N/A',
         maxTemp: 'N/A',
         timeZone:'N/A',
