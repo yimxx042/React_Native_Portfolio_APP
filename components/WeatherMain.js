@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
   StyleSheet, Text, View, KeyboardAvoidingView,
   ImageBackground, ActivityIndicator, Image
@@ -9,7 +9,7 @@ import Search from './Search';
 
 
 
-class WeatherMain extends React.Component {
+class WeatherMain extends Component {
 
   constructor(props) {
     super(props);
@@ -74,7 +74,7 @@ class WeatherMain extends React.Component {
   }
 
   static navigationOptions = {
-    title: 'Search Weather'
+    title: 'Home'
 }
 
   render() {
@@ -209,7 +209,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#DCDCDC',
         color: "#20232a",
         width: "90%",
-        height: "30%",
+        height: "33%",
         marginLeft: 20,
         padding:20,
         textAlign:'left'
